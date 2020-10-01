@@ -1,0 +1,29 @@
+---
+layout: page
+---
+
+<table>
+    <tr>
+        <th>Test Case</th>
+        <th>Image URL</th>
+    </tr>
+    {% for post in site.posts %}
+    <tr>
+        <td>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+        </td>
+        <td>
+            {%- capture img_set -%}
+                {%- include image_set.html content=post.content range="all" -%}
+            {%- endcapture -%}
+
+            {% if img_set.size > 0 %}
+                {% assign img_set = img_set | strip | split: "," %}
+                {% for url in img_set %}
+                <p>{{ url }}</p>
+                {% endfor %}
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
