@@ -1,14 +1,24 @@
 {% comment %}
-    Return all image url of post, joined by comma.
+
+    Author: Roger <rijie.li@outlook.com>
+    License: MIT License
+    GitHub: https://github.com/rijieli/jekyll-image-set
+
+    Get all image URL of posts. Pure Liquid, and easy to use.
+
     Usage:
-    {% capture img_url %}
-        {% include post_image.html content = post.content %}
-    {% endcapture %}
+        {% include post_image.html content = post.content range="all" %}
+    
+    Parameters:
+        content: page content
+        range:
+            "all":      return all image URL joined by `,`
+            "first":    return first image URL
+
 {% endcomment %}
 
 {% assign include_content = include.content | default: "" %}
 {% assign range = include.range | default: "first" %}
-
 
 {%- capture DOUBLE_QUOTES_SIGN -%}
 "
