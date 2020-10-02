@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Markdown Cheatsheet
 date: 2020-09-26 17:17:57 +0800
 ---

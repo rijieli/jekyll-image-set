@@ -1,29 +1,78 @@
 ---
-layout: page
 ---
 
-<table>
-    <tr>
-        <th>Test Case</th>
-        <th>Image URL</th>
-    </tr>
-    {% for post in site.posts %}
-    <tr>
-        <td>
-            <a href="{{ post.url }}">{{ post.title }}</a>
-        </td>
-        <td>
-            {%- capture img_set -%}
-                {%- include image_set.html content=post.content range="all" -%}
-            {%- endcapture -%}
+<!DOCTYPE html>
+<html lang="en">
 
-            {% if img_set.size > 0 %}
-                {% assign img_set = img_set | strip | split: "," %}
-                {% for url in img_set %}
-                <p>{{ url }}</p>
-                {% endfor %}
-            {% endif %}
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: "Image Set Test"}}</title>
+</head>
+
+<style>
+    .wrapper {
+        line-height: 30px;
+        max-width: 60%;
+        margin: auto;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    td {
+        border: 1px #333 solid;
+        padding: 5px;
+    }
+
+    th {
+        border: 1px #333 solid;
+    }
+</style>
+
+<body class="wrapper">
+    <div>
+        <a href="/"> >> Home </a>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>Test Case</th>
+                <th>Image URL</th>
+            </tr>
+            {% for post in site.posts %}
+            <tr>
+                <td>
+                    <a href="{{ post.url }}">{{ post.title }}</a>
+                </td>
+                <td>
+                    {%- capture img_set -%}
+                    {%- include image_set.html content=post.content range="all" -%}
+                    {%- endcapture -%}
+
+                    {% assign img_set = img_set | strip %}
+
+                    {% if img_set.size > 0 %}
+                        {% assign img_set = img_set | split: "," %}
+                        {% for url in img_set %}
+                            <p>{{ url }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+                <td>
+                    <p>{{ img_set.size }}</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>

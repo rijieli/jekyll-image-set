@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Image Test Cases
 date: 2020-10-01 18:04:11 +0800
 ---

@@ -29,6 +29,8 @@ http://via.placeholder.com/200x150,/i/eg_tulip.jpg
 
 You can use `split` filter to turn it into array.
 
+> ⚠️ NOTE: the result might contain whitespace on both left and right sides, use `strip` filter to remove it.
+
 ```
 {%- capture img_set -%}
     {%- include image_set.html content=post.content range="all" -%}
@@ -51,6 +53,15 @@ Open `index.html` as a refrence.
     * "all": Get all image URL of the page content.
 
 <sup>*</sup> You must provide content parameter, or it will return empty string. `"first"` is default value of range.  
+
+## Demo
+
+You can clone full repository to local, then run `jekyll serve` to view demo.
+
+## Enviroment
+
+- Ruby 2.7
+- Jekyll 3.9.0
 
 ## License
 This project is licensed under the terms of the [MIT](https://github.com/rijieli/jekyll-image-set/blob/main/LICENSE) license.

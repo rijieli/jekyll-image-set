@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Post with CJK
 date: 2020-09-26 23:00:05 +0800
 ---
