@@ -15,6 +15,7 @@
         line-height: 30px;
         max-width: 60%;
         margin: auto;
+        font-size: 14px;
     }
 
     table {
@@ -46,6 +47,7 @@
             <tr>
                 <th>Test Case</th>
                 <th>Image URL</th>
+                <th>Number of Image</th>
             </tr>
             {% for post in site.posts %}
             <tr>
@@ -62,7 +64,7 @@
                     {% if img_set.size > 0 %}
                         {% assign img_set = img_set | split: "," %}
                         {% for url in img_set %}
-                            <p>{{ url }}</p>
+                        <p>{{ url }}</p>
                         {% endfor %}
                     {% endif %}
                 </td>
