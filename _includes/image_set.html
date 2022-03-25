@@ -4,16 +4,17 @@
     License: MIT License
     GitHub: https://github.com/rijieli/jekyll-image-set
 
-    Get all image URL of posts. Pure Liquid, and easy to use.
+    Get all image URL of posts. Pure Liquid and easy to use.
 
     Usage:
-        {% include post_image.html content = post.content range="all" %}
+        {% include image_set.html content = post.content range=all %}
     
     Parameters:
         content: page content
         range:
-            "all":      return all image URL joined by `,`
             "first":    return first image URL
+            "all":      return all image URL joined by `,`
+            
 
 {% endcomment %}
 

@@ -10,16 +10,27 @@ I wrote this pure liquid solution to get all image URL of post automaticly.
 
 ## Usage
 
-1. Download `image_set.html` to `_includes` folder.
+1. Download `image_set.html` and place it to `_includes` folder.
 2. Use `include` tag like this:
 
 ```
 {%- include image_set.html content=post.content -%}
-# return first image URL of the page. 
+# this return first image URL of the page. 
 http://via.placeholder.com/200x150
 ```
 
-If you add parameter `range="all"`, this will return all image URL joined by `,`.
+### Create An `<img>` Tag
+
+Simply place in img tag's src attribute.
+
+```
+<img class="item-cover" src="{%- include image_set.html content=post.content -%}" alt="">
+```
+
+### Get All Image Link In Post
+
+If you add parameter `range=all`, this will return all image URLs joined by `,`.
+
 ```
 {%- include image_set.html content=post.content range=all -%}
 
@@ -33,7 +44,7 @@ You can use `split` filter to turn it into array.
 
 ```
 {%- capture img_set -%}
-    {%- include image_set.html content=post.content range="all" -%}
+    {%- include image_set.html content=post.content range=all -%}
 {%- endcapture -%}
 
 {% assign img_set = img_set | strip | split: "," %}
@@ -43,8 +54,6 @@ You can use `split` filter to turn it into array.
 {% endfor %}
 ```
 
-Open `index.html` as a refrence.
-
 ## Parameters
 
 * `content`: The page content.
@@ -52,7 +61,7 @@ Open `index.html` as a refrence.
     * "first": Get first image URL of the page content.
     * "all": Get all image URL of the page content.
 
-<sup>*</sup> You must provide content parameter, or it will return empty string. `"first"` is default value of range.  
+Content parameter is required, or it will return empty string. `first` is default value of range.  
 
 ## Demo
 
